@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="SfRadialMenuTest.WPF.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:SfRadialMenuTest.WPF.Converters"
+    xmlns:local="clr-namespace:SfRadialMenuTest.WPF"
+    ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
