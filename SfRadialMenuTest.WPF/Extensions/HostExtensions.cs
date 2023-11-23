@@ -1,4 +1,8 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Microsoft.Extensions.DependencyInjection;
 using SfRadialMenuTest.WPF.Commands;
 using SfRadialMenuTest.WPF.Factories;
@@ -6,6 +10,7 @@ using SfRadialMenuTest.WPF.Models;
 using SfRadialMenuTest.WPF.Services;
 using SfRadialMenuTest.WPF.Stores;
 using SfRadialMenuTest.WPF.ViewModels;
+using Syncfusion.SfSkinManager;
 
 namespace SfRadialMenuTest.WPF.Extensions.Extensions
 {
@@ -17,7 +22,7 @@ namespace SfRadialMenuTest.WPF.Extensions.Extensions
 			services.AddNavigationType<INavigationStore, SettingsViewModel>();
 			services.AddNavigationType<INavigationStore, ChartViewModel>();
 		}
-			public static void AddNavigationComponents(this IServiceCollection services)
+		public static void AddNavigationComponents(this IServiceCollection services)
 		{
 			services.AddSingleton<INavigationStore, NavigationStore>();
 			services.AddSingleton<IRadialNavigationItemsStore>((s) =>
@@ -27,8 +32,10 @@ namespace SfRadialMenuTest.WPF.Extensions.Extensions
 					.AddRadialItem(CreateItem("Settings", "/Resources/Images/settings.png", new NavigateCommand(s.GetRequiredService<NavigationService<SettingsViewModel>>())))
 					.AddRadialItem(CreateItem("Chart", "/Resources/Images/bar-chart.png", new NavigateCommand(s.GetRequiredService<NavigationService<ChartViewModel>>())))
 					.AddRadialItem(CreateItem("Sub Menu", "/Resources/Images/folder.png")
-						.AddChild(CreateItem("Things", "/Resources/Images/internet.png", new NavigateCommand(s.GetRequiredService<NavigationService<InfoViewModel>>())))
-						.AddChild(CreateItem("Other Things", "/Resources/Images/information.png", new NavigateCommand(s.GetRequiredService<NavigationService<InfoViewModel>>()))));
+						.AddChild(CreateItem("Themes", "/Resources/Images/Theme-icon.png")
+							.AddChild(CreateItem("Light", "/Resources/Images/Theme-iconLight.png", new ChangeThemeCommand(), VisualStyles.Windows11Light))
+							.AddChild(CreateItem("Dark", "/Resources/Images/Theme-iconDark.png", new ChangeThemeCommand(), VisualStyles.Windows11Dark)))
+						.AddChild(CreateItem("Things", "/Resources/Images/information.png", new NavigateCommand(s.GetRequiredService<NavigationService<InfoViewModel>>()))));
 			});
 
 		}
@@ -44,12 +51,43 @@ namespace SfRadialMenuTest.WPF.Extensions.Extensions
 		}
 		public static RadialMenuItem CreateItem(string description, string imagePath, ICommand? command = default, object? commandParameter = default)
 		{
+			var stackPanel = new StackPanel();
+
+			
+
+			var imageSource = new BitmapImage();
+			imageSource.BeginInit();
+			imageSource.UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute);
+			imageSource.EndInit();
+			var image = new Image()
+			{
+				Width = 64,
+				Height = 64,
+				Source = imageSource,
+			};
+			image.Source = imageSource;
+
+			var textBlock = new TextBlock()
+			{
+				Text = string.IsNullOrEmpty(description) ? "Home" : description, // Use "Home" as fallback value
+				HorizontalAlignment = HorizontalAlignment.Center,
+			};
+
+			stackPanel.Children.Add(image);
+			stackPanel.Children.Add(textBlock);
+
+			//var brush = Brushes.DarkGreen;
 			var menuItem = new RadialMenuItem()
 			{
-				Name = description,
-				ImagePath = imagePath,
+				Header = stackPanel,
+				FontSize = 18,
+				ShowMouseOverStyle = true,
+				CloseOnExecute = true,
 				Command = command,
-				CommandParameter = commandParameter
+				CommandParameter = commandParameter,
+				//RimActiveBrush = brush,
+				//RimInactiveBrush = brush,
+				Cursor = Cursors.Hand,
 			};
 			return menuItem;
 		}

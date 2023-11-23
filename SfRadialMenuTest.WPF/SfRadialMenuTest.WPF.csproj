@@ -16,6 +16,9 @@
     <None Remove="Resources\Images\settings.png" />
     <None Remove="Resources\Images\syncfusion-full.png" />
     <None Remove="Resources\Images\syncfusion.png" />
+    <None Remove="Resources\Images\Theme-icon.png" />
+    <None Remove="Resources\Images\Theme-iconDark.png" />
+    <None Remove="Resources\Images\Theme-iconLight.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +32,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Syncfusion.SfRadialMenu.WPF" Version="23.2.4" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="23.2.4" />
+    <PackageReference Include="Syncfusion.Themes.Windows11Dark.WPF" Version="23.2.4" />
+    <PackageReference Include="Syncfusion.Themes.Windows11Light.WPF" Version="23.2.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +54,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\syncfusion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Theme-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Theme-iconDark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Theme-iconLight.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

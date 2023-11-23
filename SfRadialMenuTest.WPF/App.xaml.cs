@@ -16,6 +16,7 @@ public partial class App : Application
 	public static IHost? AppHost { get; private set; }
 	public App()
 	{
+		SyncfusionLicenseProvider.RegisterLicense("MjcwNTg5M0AzMjMzMmUzMDJlMzBsZ0dSdHU0OEc2WkZIdUgvZzFiV2MzVjNoK3JMUG1ER1BUcHI1dlZmM0Y0PQ==");
 		AppHost = Host.CreateDefaultBuilder()
 			.ConfigureServices((context, services) =>
 			{

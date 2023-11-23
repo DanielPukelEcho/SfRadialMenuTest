@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using SfRadialMenuTest.WPF.Models;
 using SfRadialMenuTest.WPF.Stores;
+using Syncfusion.SfSkinManager;
 
 namespace SfRadialMenuTest.WPF.ViewModels
 {
@@ -11,14 +12,16 @@ namespace SfRadialMenuTest.WPF.ViewModels
         public IEnumerable<RadialMenuItem> NavigationItems => _radialNavigationItemsStore.RadialMenuItems;
 		public ViewModelBase? CurrentViewModel => _navigationStore.CurrentViewModel;
 		public string Title => CurrentViewModel?.GetType().Name ?? "Header";
+		public VisualStyles VisualStyle => ThemeStore.Instance.CurrentTheme;
 
-		[ObservableProperty]
+        [ObservableProperty]
 		private bool _radialMenuIsOpen;
         public MainWindowViewModel(IRadialNavigationItemsStore radialNavigationItemsStore, INavigationStore navigationStore)
 		{
 			_radialNavigationItemsStore = radialNavigationItemsStore;
 			_navigationStore = navigationStore;
 			_navigationStore.CurrentViewModelChanged += () => OnPropertyChanged(nameof(CurrentViewModel));
+			ThemeStore.ThemeChanged += () => OnPropertyChanged(nameof(VisualStyle));
 		}
 	}
 }

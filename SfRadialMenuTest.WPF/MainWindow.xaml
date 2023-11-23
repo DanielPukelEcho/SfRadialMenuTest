@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:SfRadialMenuTest.WPF"
         xmlns:viewmodels="clr-namespace:SfRadialMenuTest.WPF.ViewModels"
         xmlns:views="clr-namespace:SfRadialMenuTest.WPF.Views"
+        xmlns:syncfusionskin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        syncfusionskin:SfSkinManager.VisualStyle="{Binding VisualStyle}"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
         WindowState="Maximized"

@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:viewmodels="clr-namespace:SfRadialMenuTest.WPF.ViewModels"
+    
     d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
     mc:Ignorable="d">
     <syncfusion:SfRadialMenu
@@ -24,22 +25,5 @@
                 Source="/Resources/Images/syncfusion.png"
                 Stretch="Uniform" />
         </syncfusion:SfRadialMenu.Icon>
-        <syncfusion:SfRadialMenu.ItemTemplate>
-            <HierarchicalDataTemplate ItemsSource="{Binding Items}">
-                <StackPanel>
-                    <Image
-                        Width="64"
-                        Height="64"
-                        HorizontalAlignment="Center"
-                        Source="{Binding ImagePath, Converter={StaticResource StringToImageSourceConverter}}"
-                        Stretch="UniformToFill" />
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        FontSize="20"
-                        FontWeight="SemiBold"
-                        Text="{Binding Name, FallbackValue=Home}" />
-                </StackPanel>
-            </HierarchicalDataTemplate>
-        </syncfusion:SfRadialMenu.ItemTemplate>
     </syncfusion:SfRadialMenu>
 </UserControl>
