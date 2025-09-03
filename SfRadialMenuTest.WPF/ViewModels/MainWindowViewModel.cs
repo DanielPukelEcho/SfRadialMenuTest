@@ -12,7 +12,6 @@ namespace SfRadialMenuTest.WPF.ViewModels
         public IEnumerable<RadialMenuItem> NavigationItems => _radialNavigationItemsStore.RadialMenuItems;
 		public ViewModelBase? CurrentViewModel => _navigationStore.CurrentViewModel;
 		public string Title => CurrentViewModel?.GetType().Name ?? "Header";
-		public VisualStyles VisualStyle => ThemeStore.Instance.CurrentTheme;
 
         [ObservableProperty]
 		private bool _radialMenuIsOpen;
@@ -21,7 +20,6 @@ namespace SfRadialMenuTest.WPF.ViewModels
 			_radialNavigationItemsStore = radialNavigationItemsStore;
 			_navigationStore = navigationStore;
 			_navigationStore.CurrentViewModelChanged += () => OnPropertyChanged(nameof(CurrentViewModel));
-			ThemeStore.ThemeChanged += () => OnPropertyChanged(nameof(VisualStyle));
 		}
 	}
 }

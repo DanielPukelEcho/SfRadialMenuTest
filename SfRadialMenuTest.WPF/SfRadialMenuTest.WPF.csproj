@@ -28,13 +28,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-    <PackageReference Include="Syncfusion.SfRadialMenu.WPF" Version="23.2.4" />
-    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="23.2.4" />
-    <PackageReference Include="Syncfusion.Themes.Windows11Dark.WPF" Version="23.2.4" />
-    <PackageReference Include="Syncfusion.Themes.Windows11Light.WPF" Version="23.2.4" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
+    <PackageReference Include="Syncfusion.SfRadialMenu.WPF" Version="30.2.7" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="30.2.7" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="30.2.7" />
+    <PackageReference Include="Syncfusion.Themes.Windows11Dark.WPF" Version="30.2.7" />
+    <PackageReference Include="Syncfusion.Themes.Windows11Light.WPF" Version="30.2.7" />
   </ItemGroup>
 
   <ItemGroup>

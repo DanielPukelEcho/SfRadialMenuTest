@@ -1,4 +1,5 @@
 ﻿using Syncfusion.SfSkinManager;
+using System.Windows;
 
 namespace SfRadialMenuTest.WPF.Stores
 {
@@ -21,11 +22,22 @@ namespace SfRadialMenuTest.WPF.Stores
 			}
 		}
 		private VisualStyles _currentTheme = VisualStyles.Windows11Light;
-		
+
 		public static void ChangeTheme(VisualStyles theme)
 		{
 			Instance.CurrentTheme = theme;
-		}
+
+			Application.Current.Dispatcher.Invoke(() =>
+			{
+                SfSkinManager.ApplyThemeAsDefaultStyle = true;
+                foreach (Window window in Application.Current.Windows)
+                {
+                    SfSkinManager.SetTheme(window, new Theme(theme.ToString()));
+                }
+
+            });
+            
+        }
 		private static void OnThemeChanged()
 		{
 			ThemeChanged?.Invoke();
