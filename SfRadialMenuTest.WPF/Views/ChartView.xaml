@@ -1,12 +1,55 @@
-﻿<UserControl x:Class="SfRadialMenuTest.WPF.Views.ChartView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SfRadialMenuTest.WPF.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="SfRadialMenuTest.WPF.Views.ChartView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SfRadialMenuTest.WPF.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <Grid>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Chart" FontSize="48"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="48"
+            Text="Chart" />
+
+
+
+        <syncfusion:SfCircularProgressBar
+            Grid.Row="2"
+            Width="190"
+            Height="190"
+            Cursor="Hand"
+            IndicatorInnerRadius="0.9"
+            Progress="{Binding MeasuringReactorProgress, FallbackValue=50}">
+            <syncfusion:SfCircularProgressBar.ProgressContent>
+                <Grid>
+                    <Image
+                        Width="90"
+                        Margin="0,-5,0,0"
+                        Source="/Resources/Images/settings.png"
+                        Visibility="Visible" />
+                </Grid>
+            </syncfusion:SfCircularProgressBar.ProgressContent>
+        </syncfusion:SfCircularProgressBar>
+        <syncfusion:SfCircularProgressBar
+            Grid.Row="2"
+            Width="170"
+            Height="170"
+            IndicatorInnerRadius="0.90"
+            Progress="{Binding MeasuringReactorAmbientProgress, FallbackValue=50}"
+            ProgressColor="Red">
+            <syncfusion:SfCircularProgressBar.ProgressContent>
+                <Grid />
+            </syncfusion:SfCircularProgressBar.ProgressContent>
+        </syncfusion:SfCircularProgressBar>
+
     </Grid>
 </UserControl>
