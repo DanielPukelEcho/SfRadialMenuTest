@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SfRadialMenuTest.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:SfRadialMenuTest.WPF.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
     mc:Ignorable="d">
     <Grid>
@@ -19,8 +20,22 @@
                 Margin="6,0,0,2"
                 VerticalAlignment="Bottom"
                 FontSize="34"
-                Foreground="Black"
-                Text="{Binding Title, FallbackValue=Header}" />
+                Text="{Binding Title, FallbackValue=Header}">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <!--  When saturated, change color  -->
+                            <DataTrigger Binding="{Binding IsWarning}" Value="True">
+                                <Setter Property="Foreground" Value="Orange" />
+                            </DataTrigger>
+                            <!--  When error, override to error colors  -->
+                            <DataTrigger Binding="{Binding IsError}" Value="True">
+                                <Setter Property="Foreground" Value="Red" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
             <Border
                 Margin="0,0,0,0"
                 BorderBrush="Black"

@@ -13,13 +13,37 @@ namespace SfRadialMenuTest.WPF.ViewModels
 		public ViewModelBase? CurrentViewModel => _navigationStore.CurrentViewModel;
 		public string Title => CurrentViewModel?.GetType().Name ?? "Header";
 
+		[ObservableProperty]
+		private bool _isWarning = false;
+
         [ObservableProperty]
-		private bool _radialMenuIsOpen;
+        private bool _isError = false;
+
+        [ObservableProperty]
+        private bool _radialMenuIsOpen;
         public MainWindowViewModel(IRadialNavigationItemsStore radialNavigationItemsStore, INavigationStore navigationStore)
 		{
 			_radialNavigationItemsStore = radialNavigationItemsStore;
 			_navigationStore = navigationStore;
-			_navigationStore.CurrentViewModelChanged += () => OnPropertyChanged(nameof(CurrentViewModel));
+			_navigationStore.CurrentViewModelChanged += () =>
+			{
+				OnPropertyChanged(nameof(CurrentViewModel));
+				if(CurrentViewModel is SettingsViewModel)
+				{
+					IsError = true;
+                    IsWarning = false;
+                }
+                else if(CurrentViewModel is InfoViewModel)
+				{
+					IsError = false;
+					IsWarning = true;
+				}
+				else
+				{
+                    IsError = false;
+                    IsWarning = false;
+                }
+			};
 		}
 	}
 }
