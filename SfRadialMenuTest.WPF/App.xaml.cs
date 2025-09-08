@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Syncfusion.Licensing;
 using SfRadialMenuTest.WPF.Extensions.Extensions;
 using SfRadialMenuTest.WPF.Services;
+using SfRadialMenuTest.WPF.Stores;
 
 namespace SfRadialMenuTest.WPF;
 
@@ -31,10 +32,10 @@ public partial class App : Application
 			.Build();
 	}
 	protected override async void OnStartup(StartupEventArgs e)
-	{
-		base.OnStartup(e);
-
-		await AppHost!.StartAsync();
+    {
+        ThemeStore.RegisterThemeStore();
+        base.OnStartup(e);
+        await AppHost!.StartAsync();
 		var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
 		MainWindow = mainWindow;
 		mainWindow.Show();

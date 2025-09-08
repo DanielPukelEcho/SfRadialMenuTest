@@ -34,7 +34,8 @@ namespace SfRadialMenuTest.WPF.Extensions.Extensions
 					.AddRadialItem(CreateItem("Sub Menu", "/Resources/Images/folder.png")
 						.AddChild(CreateItem("Themes", "/Resources/Images/Theme-icon.png")
 							.AddChild(CreateItem("Light", "/Resources/Images/Theme-iconLight.png", new ChangeThemeCommand(), VisualStyles.Windows11Light))
-							.AddChild(CreateItem("Dark", "/Resources/Images/Theme-iconDark.png", new ChangeThemeCommand(), VisualStyles.Windows11Dark)))
+                            .AddChild(CreateItem("FluentDark", "/Resources/Images/Theme-iconLight.png", new ChangeThemeCommand(), VisualStyles.FluentDark))
+                            .AddChild(CreateItem("Dark", "/Resources/Images/Theme-iconDark.png", new ChangeThemeCommand(), VisualStyles.Windows11Dark)))
 						.AddChild(CreateItem("Things", "/Resources/Images/information.png", new NavigateCommand(s.GetRequiredService<NavigationService<InfoViewModel>>()))));
 			});
 

@@ -9,7 +9,7 @@
     xmlns:viewmodels="clr-namespace:SfRadialMenuTest.WPF.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
     mc:Ignorable="d">
-    <Grid>
+    <Grid Panel.ZIndex="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -108,7 +108,7 @@
             Margin="0,-144,-124,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Panel.ZIndex="10">
+            Panel.ZIndex="100">
             <Grid.Style>
                 <Style TargetType="Grid">
                     <Style.Triggers>

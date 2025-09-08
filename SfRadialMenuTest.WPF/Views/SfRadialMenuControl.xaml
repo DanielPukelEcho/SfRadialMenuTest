@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:viewmodels="clr-namespace:SfRadialMenuTest.WPF.ViewModels"
-    
     d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
     mc:Ignorable="d">
     <syncfusion:SfRadialMenu
